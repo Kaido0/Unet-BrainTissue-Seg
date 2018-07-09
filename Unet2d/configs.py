@@ -1,11 +1,4 @@
-#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-Created on Thu Dec 28 00:07:41 2017
-
-@author: Vu Hoang Minh
-"""
-
 # image shape
 VOLUME_ROWS = 512
 VOLUME_COLS = 512
@@ -26,19 +19,32 @@ elif PATCH_SIZE==32:
 elif PATCH_SIZE==16:
     EXTRACTTION_STEP = 9
     EXTRACTTION_STEP_CSF = 4
+elif PATCH_SIZE==512:
+    EXTRACTTION_STEP=1
+    EXTRACTTION_STEP_CSF=1
     
 # training configs
-UNET_MODEL = 0
+UNET_MODEL = 3
 if UNET_MODEL==0:
     MODEL = 'default'    
 elif UNET_MODEL==1:
     MODEL = 'reduced'
 elif UNET_MODEL==2:
-    MODEL = 'extended'   
+    MODEL = 'extended' 
+elif UNET_MODEL==3:
+    MODEL = 'res' 
+elif UNET_MODEL==4:
+    MODEL = 'dense'   
+elif UNET_MODEL==5:
+    MODEL='fcn'  
+elif UNET_MODEL==6:
+    MODEL='senet'   
+elif UNET_MODEL==7:
+    MODEL='segnet'
     
 BASE = PATCH_SIZE
 SMOOTH = 1.
-NUM_EPOCHS  = 500
+NUM_EPOCHS  = 300
 BATCH_SIZE  = 64
 
 extraction_reconstruct_step = PATCH_SIZE
